@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 502027352}
   - component: {fileID: 502027351}
   m_Layer: 0
-  m_Name: Capsule (2)
+  m_Name: HalfLambert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 592217188}
   - component: {fileID: 592217187}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: DiffusePixel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 1409789107}
   - component: {fileID: 1409789106}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: DiffuseVertex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
