@@ -45,7 +45,7 @@ Shader "Custom/Chapter 6/Specular Vertex-Level"
 				fixed3 reflectDir = reflect(-worldLightDir, worldNormal);
 				//取得在世界空间下的视图方向
 				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - UnityObjectToWorldDir(v.vertex).xyz);
-				//计算高光反射，specular(lightcolor.rgb * specular.rgb) * pow(max(0, dot(viewDir, reflectDir)), _Gloss);
+				//计算镜面反射，specular(lightcolor.rgb * specular.rgb) * pow(max(0, dot(viewDir, reflectDir)), _Gloss);
 				fixed3 specular = _LightColor0.rgb *_Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss);
 				o.color = ambient + diffuse + specular;
 				return o;

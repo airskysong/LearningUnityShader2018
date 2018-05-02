@@ -51,7 +51,7 @@ Shader "Custom/Chapter 6/Specular Pixel-Level"
 				fixed3 reflectDir = reflect(-worldLightDir, i.worldNormal);
 				//取得在世界空间下的视图方向
 				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
-				//计算高光反射
+				//计算镜面反射
 				fixed3 specular = _LightColor0.rgb *_Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss);
 				fixed3 color = ambient + diffuse + specular;
 				return fixed4(color, 1.0);

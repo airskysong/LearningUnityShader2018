@@ -1,7 +1,7 @@
 ﻿//Blinn-Phong光照
 Shader "Custom/Chapter 6/Specular BlinnPhong"
 {
-	//分别声明了漫反射颜色，高光颜色，高光区域大小
+	//分别声明了漫反射颜色，镜面颜色，高光区域大小
 	Properties{
 		_Diffuse("Diffuse", Color) = (1.0, 1.0, 1.0, 1.0)
 		_Specular("Specular", Color) = (1.0, 1.0, 1.0, 1.0)
@@ -52,7 +52,7 @@ Shader "Custom/Chapter 6/Specular BlinnPhong"
 				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));
 				//计算blinn半方向，半方向为视图方向和入射光方向的和的归一化
 				fixed3 halfDir = normalize(viewDir + worldLightDir);
-				//使用blinn模型计算高光反射
+				//使用blinn模型计算镜面反射
 				fixed3 specular = _LightColor0.rgb *_Specular.rgb * pow(saturate(dot(halfDir, i.worldNormal)), _Gloss);
 				fixed3 color = ambient + diffuse + specular;
 				return fixed4(color, 1.0);
