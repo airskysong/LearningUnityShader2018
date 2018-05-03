@@ -1,4 +1,5 @@
-﻿Shader "Custom/Chapter 7/Normalmap in world space" {
+﻿//世界空间下计算法线贴图
+Shader "Custom/Chapter 7/Normalmap in world space" {
 	Properties {
 		_Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
 		_MainTex("MainTex", 2D) = "white"{}
@@ -59,6 +60,7 @@
 			}
 
 			float4 frag(v2f i) : SV_TARGET{
+				//获取顶点坐标
 				float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
 				fixed3 lightDir = normalize(UnityWorldSpaceLightDir(worldPos));
 				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(worldPos));
@@ -71,7 +73,7 @@
 				tangentNormal.xy *= _BumpScale;
 				//因为tangentNormal是单位向量，可以由xy分量算出对应的z分量
 				tangentNormal.z = sqrt(1.0 - saturate(dot(tangentNormal.xy, tangentNormal.xy)));
-				//把切线法线向量转换到世界空间下
+				//把切线法线向量转换到世界空间下，注意这里的点乘，等于行列的点乘，相当于做矩阵变换
 				tangentNormal = normalize(half3(dot(i.TtoW0.xyz, tangentNormal), dot(i.TtoW1.xyz, tangentNormal), dot(i.TtoW2.xyz, tangentNormal)));
 				//对纹理贴图_MainTex进行采样，乘以主颜色得到反射率
 				fixed3 albedo = tex2D(_MainTex, i.uv).rgb * _Color.rgb;
